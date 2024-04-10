@@ -35,10 +35,9 @@ The IaC solution included in this project is Terraform.  Start in the `iac` dire
 The following environment variables will need to be set to configure the DuploCloud Terraform Provider:
 
 > Note: See section "Access to a DuploCloud Platform" for details on how to get values for these environment variables.
-
 > Note: If you are running the terraform interactively from your worksattion you can skip setting `duplo_token`, this value will be interactively retrieved using your browser.
 
-```
+```bash
 export duplo_token=""
 export duplo_host="https://example.duplocloud.net/"
 ```
@@ -49,7 +48,7 @@ See the Architecture Diagrams section for examples of customer tenancy patterns 
 
 ##### Single VPC, multiple tenants
 
-```
+```bash
 ./scripts/apply.sh prod-common-usw-01 admin-infra -var cidr_bit=2
 
 ./scripts/apply.sh customera admin-tenant -var infrastructure_name="prod-common-usw-01"
@@ -63,7 +62,7 @@ See the Architecture Diagrams section for examples of customer tenancy patterns 
 
 ##### VPC per tenant
 
-```
+```bash
 ./scripts/apply.sh prod-customera admin-infra -var cidr_bit=3
 ./scripts/apply.sh customera admin-tenant -var infrastructure_name="prod-customera"
 ./scripts/apply.sh customera aws-services
@@ -84,21 +83,19 @@ The automation apart of this project supports four models of isolating customer 
 3. VPC
 4. AWS Account
 
-![](./images/1%20-%20Application%20Provides%20Tenancy.png)
+![Application provides tenancy](./images/1%20-%20Application%20Provides%20Tenancy.png)
 
-![](./images/2%20-%20DuploCloud%20Tenant.png)
+![DuploCloud Tenant provides tenancy](./images/2%20-%20DuploCloud%20Tenant.png)
 
-![](./images/3%20-%20DuploCloud%20Infrastructure.png)
+![DuploCloud Infrastructure provides tenancy](./images/3%20-%20DuploCloud%20Infrastructure.png)
 
-![](./images/4%20-%20Cloud%20Account.png)
+![AWS Account + Duplocloud provides tenancy](./images/4%20-%20Cloud%20Account.png)
 
-![](./images/5%20-%20Hybrid%20Tenancy%20Model.png)
-
+![DuploCloud supports hybrid combinations of tenancy](./images/5%20-%20Hybrid%20Tenancy%20Model.png)
 
 ## Access to a DuploCloud Platform
 
 To get access to a DuploCloud platform environment for testing out the automation provided as a part of this project reach out to DuploCloud [here](https://lp.duplocloud.com/aws/saas).
-
 
 ## Support
 
